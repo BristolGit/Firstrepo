@@ -1,0 +1,14 @@
+.invertedLogo {
+    width: 30px;
+    height: 30px;
+    filter: invert(1);
+}
+
+.invertedLogo:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}

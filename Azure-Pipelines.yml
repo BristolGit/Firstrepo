@@ -1,0 +1,77 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  # Azure service connection name (Service principal with access to ACR and AKS)
+  #azureSubscription: '___' #SUBSCRIPTION EXPIRED!
+  # ACR details
+  acrName: 'myacrname'
+  acrLoginServer: 'myacrname.azurecr.io'
+  # Image names and tags
+  clientImageName: 'my-app-client'
+  serverImageName: 'my-app-server'
+  imageTag: '$(Build.BuildId)'
+  # AKS details
+  aksResourceGroup: 'my-aks-resource-group'
+  aksClusterName: 'my-aks-cluster'
+  # Helm release name
+  helmReleaseName: 'my-app'
+
+stages:
+- stage: Build
+  displayName: 'Build Docker Images'
+  jobs:
+  - job: Build
+    steps:
+    - task: Docker@2
+      displayName: 'Build client Docker image'
+      inputs:
+        containerRegistry: '$(acrName)'
+        repository: '$(acrLoginServer)/$(clientImageName)'
+        command: 'buildAndPush'
+        Dockerfile: 'client/Dockerfile'
+        tags: |
+          $(imageTag)
+
+    - task: Docker@2
+      displayName: 'Build server Docker image'
+      inputs:
+        containerRegistry: '$(acrName)'
+        repository: '$(acrLoginServer)/$(serverImageName)'
+        command: 'buildAndPush'
+        Dockerfile: 'server/Dockerfile'
+        tags: |
+          $(imageTag)
+
+- stage: Deploy
+  displayName: 'Deploy to AKS'
+  dependsOn: Build
+  jobs:
+  - job: Deploy
+    steps:
+    - task: AzureCLI@2
+      displayName: 'Install Helm'
+      inputs:
+        azureSubscription: '$(azureSubscription)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+    - task: AzureCLI@2
+      displayName: 'Deploy application using Helm'
+      inputs:
+        azureSubscription: '$(azureSubscription)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az aks get-credentials --resource-group $(aksResourceGroup) --name $(aksClusterName)
+          helm upgrade --install $(helmReleaseName) ./helm-chart \
+            --set client.image.repository=$(acrLoginServer)/$(clientImageName) \
+            --set client.image.tag=$(imageTag) \
+            --set server.image.repository=$(acrLoginServer)/$(serverImageName) \
+            --set server.image.tag=$(imageTag) \
+            --namespace default --values values.yaml

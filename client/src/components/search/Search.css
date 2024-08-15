@@ -1,0 +1,254 @@
+.rootSearch {
+    
+    justify-content: center;
+    align-items: center;
+    height: 300vh;
+}
+  
+.logoSearch {
+    max-width: 100px;
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+  
+.title {
+    text-align: center;
+    margin: 16px;
+}
+
+.button {
+    background-color: #000;
+    color: #fff;
+    border-radius: 0px;
+    padding: 12px 24px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    margin: 16px;
+    border: 2px solid #fff;
+    text-transform: none;
+    transition: all 0.2s ease-in-out;
+}
+  
+.button:hover {
+  cursor: pointer;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #fff;
+  transform: translate(2px, -2px);
+}
+
+.tableButton {
+  border: 0;
+  border-radius: 3px;
+  background-color: white;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.1s ease-in;
+}
+
+.tableButton:hover {
+  background-color: #e6f0ff;
+  cursor: pointer;
+}
+
+.tableButton:active {
+  background-color: #cce6ff;
+}
+
+.searchBy {
+  background-color: #000;
+  color: #fff;
+  border-radius: 0px;
+  padding: 10px 20px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  margin: 16px;
+  border: 2px solid #fff;
+  text-transform: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.searchBy:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: 16px;
+  color: #444;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.searchBar {
+  width: 300px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.searchBar:focus {
+  outline: none;
+  border-color: #4b9cdb;
+  box-shadow: 0 0 4px #4b9cdb;
+}
+
+.search-form {
+  width: 60rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d3d3d3;
+  border-radius: 0.5rem;
+  margin-bottom: 5rem;
+  box-shadow: 1rem 2rem 5rem #aaa;
+  position: relative;
+}
+
+.alert {
+  position: absolute;
+  top: -3rem;
+  left: 0;
+  background-color: rgb(233, 72, 72);
+  width: calc(100% - 0.4rem);
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+}
+
+.alert h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.search-form input {
+  font-size: 1.6rem;
+  border: none;
+  border-bottom: 0.1rem solid #ccc;
+  margin: 0 0.5rem;
+  border-radius: 0.5rem;
+  height: 3rem;
+}
+
+.search-form input[type="text"] {
+  padding: 0 0.5rem;
+  width: 60%;
+  color: #555;
+}
+
+.search-form input[type="submit"] {
+  width: 25%;
+  text-transform: uppercase;
+  background-color: #df4343;
+  color: #fff;
+}
+
+.favIcon:hover {
+  cursor: pointer;
+}
+
+.modal {
+  display: block;
+  width: 90%;
+  max-width: 1200px;
+  z-index: 10;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) { /* Set the breakpoint for smaller screens */
+  .modal {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.modal2 {
+  display: block;
+  position: fixed;
+  z-index: 11;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 70%; /* change this value to center vertically */
+  transform: translateY(-50%);
+  width: 50%;
+  height: 100%;
+}
+
+.modal3 {
+  display: block;
+  position: fixed;
+  z-index: 11;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 70%; /* change this value to center vertically */
+  transform: translateY(-50%);
+  width: 50%;
+  height: 100%;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.close:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+th {
+  cursor: pointer;
+}
+
+/*
+th.ascending:after {
+  content: ' ▲';
+}
+
+th.descending:after {
+  content: ' ▼';
+}
+*/
