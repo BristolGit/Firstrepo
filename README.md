@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # MedBud - CSI 4103 Group Project
 
@@ -25,3 +26,9 @@ In the `frontend` directory:
 In the `server` directory:
 1. Run `npm install`
 2. Run `npm start`
+=======
+"tes text" 
+TEXT ADDED ONLINE, WILL  TO BE PULLED LOCALLY
+i am adding new line
+sdsgffgdgf
+>>>>>>> 43f0d776c4673919fe032078d49443d37c7a072c
